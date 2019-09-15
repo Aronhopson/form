@@ -1,14 +1,12 @@
 import React from 'react';
-import Form from './form'
-import FormMulti  from './form_multi'
-import './App.css'
+import BoxList from './Box_Form/BoxList';
+ 
 
 
 function App() {
   return (
     <div className="App">
-     <Form/>
-     <FormMulti/>
+  <BoxList />
     </div>
   );
 }
