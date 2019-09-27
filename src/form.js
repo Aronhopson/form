@@ -1,30 +1,51 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class Form extends Component{
-    constructor(props){
-        super(props)
-        this.state = {username: ''};
-        this.handleChnage=this.handleChnage.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this)
+class Form extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { username: "", email: "", password: "" }
+        this.handlChnage = this.handlChnage.bind(this)
+        this.handlSub = this.handlSub.bind(this)
+
+
     }
-    handleChnage(evt){
-        this.setState({username : evt.target.value})
+    handlChnage(evt) {
+        this.setState({ [evt.target.name]: evt.target.value })
     }
-    handleSubmit(evt){
-        this.setState({username: ""})
+    handlSub(evt) {
+        evt.preventDefault(); // to prevent server to load
+       this.props.addItem(this.state);
+        this.setState({ username: " ",  qty : "" })
     }
 
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
-                <h1>Form</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input type='text' value={this.state.username}
-                    onChange={this.handleChnage}></input>
-                    <button >Submit</button>
+                <h1>This form</h1>
+                <form onSubmit={this.handlSub}>
+                    <input type="text"
+                        value={this.state.username}
+                        onChange={this.handlChnage}
+                        name="username"
+                    ></input>
+
+                    <input type="password"
+                        value={this.state.password}
+                        onChange={this.handlChnage}
+                        name="password"
+                    ></input>
+
+                    <input type="email"
+                        value={this.state.email}
+                        onChange={this.handlChnage}
+                        name="email"
+                    ></input>
+                    <button >Add</button>
                 </form>
             </div>
         )
     }
 }
+
 export default Form;
