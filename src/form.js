@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Form extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", email: "", password: "" }
+        this.state = { name: "", qty: "" }
         this.handlChnage = this.handlChnage.bind(this)
         this.handlSub = this.handlSub.bind(this)
 
@@ -14,8 +14,8 @@ class Form extends Component {
     }
     handlSub(evt) {
         evt.preventDefault(); // to prevent server to load
-       this.props.addItem(this.state);
-        this.setState({ username: " ",  qty : "" })
+        this.props.addItem(this.state);
+        this.setState({ name: " ", qty: "" })
     }
 
 
@@ -24,23 +24,21 @@ class Form extends Component {
             <div>
                 <h1>This form</h1>
                 <form onSubmit={this.handlSub}>
+                    <label htmlFor="name">Name</label>
                     <input type="text"
-                        value={this.state.username}
+                        value={this.state.name}
                         onChange={this.handlChnage}
-                        name="username"
+                        name="name"
                     ></input>
 
-                    <input type="password"
-                        value={this.state.password}
+                    <label htmlFor="qty">QTY</label>
+                    <input type="text"
+                        value={this.state.qty}
                         onChange={this.handlChnage}
-                        name="password"
+                        name="qty"
+                        placeholder="qty"
                     ></input>
 
-                    <input type="email"
-                        value={this.state.email}
-                        onChange={this.handlChnage}
-                        name="email"
-                    ></input>
                     <button >Add</button>
                 </form>
             </div>
