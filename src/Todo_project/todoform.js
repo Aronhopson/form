@@ -1,4 +1,5 @@
 import React , {Component} from 'react'
+import  uuid from 'uuid/v4'
 
 class Form extends Component{
     constructor(props){
@@ -14,7 +15,7 @@ class Form extends Component{
     }
     handlesub(evt){
         evt.preventDefault();
-        this.props.createForm(this.state); 
+        this.props.createForm({...this.state, id :  uuid()}); 
         this.setState ({ task : " "})
     }
 
